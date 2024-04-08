@@ -14,5 +14,5 @@ public class CreateProductRequest
 
 public class CreateProductResponse
 {
-    public int ProductId { get; set; }
+    public Guid ProductId { get; set; }
 }

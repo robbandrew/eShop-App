@@ -1,10 +1,12 @@
-namespace eShopApp.Domain.Base;
-
-public interface IRepository<T> where T : IEntity
+﻿namespace eShopApp.Domain.Base
 {
-    Task<int> Insert(T entity);
-    Task<T> Update(T entity);
-    Task<bool> Delete(T entity);
-    Task<T> GetById { get; set; }
-    Task<T> GetByGuid { get; set; }
+    using System.Threading.Tasks;
+
+    public interface IRepository<TEntity> where TEntity : Entity
+    {
+        Task<TEntity?> GetById(int productId);
+        Task Remove(TEntity entity);
+        Task<int> Add(TEntity entity);
+        Task Update(TEntity entity);
+}
 }

@@ -8,7 +8,7 @@ public class Product : Entity, IGuid
     public string Name { get; set; } = string.Empty;
     public string Description { get; set; } = string.Empty;
     public string ImageUrl { get; set; } = string.Empty;
-    public Guid Guid { get; init; }
+    public Guid Guid { get; set; }
 
     public static Product CreateProduct(string name, string description, string imageUrl)
     {
@@ -17,7 +17,7 @@ public class Product : Entity, IGuid
             Name = name,
             Description = description,
             ImageUrl = imageUrl,
-            Guid = new Guid()
+            Guid = Guid.NewGuid()
         };
     }
 }

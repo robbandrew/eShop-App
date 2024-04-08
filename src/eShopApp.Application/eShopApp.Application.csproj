@@ -11,10 +11,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Products\Queries\" />
-    </ItemGroup>
-
-    <ItemGroup>
       <ProjectReference Include="..\eShopApp.Contracts\eShopApp.Contracts.csproj" />
       <ProjectReference Include="..\eShopApp.Domain\eShopApp.Domain.csproj" />
     </ItemGroup>

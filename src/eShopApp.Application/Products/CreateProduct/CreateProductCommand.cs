@@ -1,26 +1,26 @@
-﻿using eShopApp.Domain.Products;
+﻿namespace eShopApp.Application.Products.CreateProduct;
 
-namespace eShopApp.Application.Products.Commands;
-using Contracts.Products;
+using eShopApp.Contracts.Products;
+using eShopApp.Domain.Products;
 using MediatR;
 
 public record CreateProductCommand(string Name, string Description, string ImageUrl) : IRequest<CreateProductResponse>
 { }
 
-internal class CreateProductCommandHandler(IProductRepository repository)
+internal class CreateProductCommandHandler(IProductsRepository repository)
     : IRequestHandler<CreateProductCommand, CreateProductResponse>
 {
-    private readonly IProductRepository _repository = repository;
+    private readonly IProductsRepository _repository = repository;
 
     public async Task<CreateProductResponse> Handle(CreateProductCommand request, CancellationToken cancellationToken)
     {
         var product = Product.CreateProduct(request.Name, request.Description, request.ImageUrl);
 
-        var productId = await _repository.Insert(product);
-        
+        var productId = await _repository.Add(product);
+
         return new CreateProductResponse
         {
-            ProductId = productId
+            ProductId = product.Guid
         };
     }
 }
